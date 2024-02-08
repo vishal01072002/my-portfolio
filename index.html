@@ -386,12 +386,12 @@
 
           <div class="form-container">
             <form class="form">
-              <input class="form-input" type="text" placeholder="Enter Your Name"/>
-              <input class="form-input" type="email" placeholder="Enter Your Email"/>
-              <input class="form-input" type="text" placeholder="Enter Your Subject"/>
-              <textarea class="" type="text" placeholder="Enter Your Message..." cols="30" rows="10"></textarea>
+              <input id="name" class="form-input" type="text" placeholder="Enter Your Name"/>
+              <input id="email" class="form-input" type="email" placeholder="Enter Your Email"/>
+              <!-- <input class="form-input" type="text" placeholder="Enter Your Subject"/> -->
+              <textarea id="message" class="" type="text" placeholder="Enter Your Message..." cols="30" rows="10"></textarea>
 
-              <button class="hireme-btn message-btn">
+              <button type="button" onclick="sendEmail()" class="hireme-btn message-btn">
                 <div class="white-btn"></div>
                 <div class="hireme-text">Send Message <i class="submit-icon fa-solid fa-paper-plane"></i></div>
               </button>
@@ -418,7 +418,7 @@
             
             <a href="https://www.linkedin.com/in/vishal-kumar-6736a821b" target="_blank"><i class="foot-icon fa-brands fa-linkedin"></i> </a>
             <a href="https://github.com/vishal01072002" target="_blank"><i class="foot-icon fa-brands fa-github"></i> </a>
-            <a href="" target="_blank"><i class="foot-icon fa-solid fa-link"></i> </a>
+            <a href="https://vishal01.bio.link/" target="_blank"><i class="foot-icon fa-solid fa-link"></i> </a>
             <a href="https://instagram.com/_._lucifer_1_?igshid=MzNlNGNkZWQ4Mg==" target="_blank"><i class="foot-icon fa-brands fa-instagram"></i> </a>
             <a href="mailto:vishalbavakumar0000@gmail.com" target="_blank"><i class="foot-icon fa-regular fa-envelope"></i> </a>
             <a href="https://drive.google.com/drive/folders/1wI9RdM0xn6E69lZmBjMxaYWeat_bNUHr" target="_blank"><i class="foot-icon fa-regular fa-file-lines"></i> </a>
@@ -450,36 +450,39 @@
       });
     </script>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        function sendEmail() {
-            Email.send({
-                Host: "smtp.gmail.com",
-                Username: "sender@email_address.com",
-                Password: "Enter your password",
-                To: 'receiver@email_address.com',
-                From: "sender@email_address.com",
-                Subject: "Sending Email using javascript",
-                Body: "Well that was easy!!",
-            })
-                .then(function (message) {
-                    alert("mail sent successfully")
-                });
+      (function(){
+        emailjs.init({
+          publicKey: "oRAedG0iqkwEu1-mD",
+        });
+      })();
+    </script>
+
+    <script>
+      function sendEmail() {
+        const data = {
+          name : document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        }
+
+        console.log(data);
+        
+        const serviceID = "service_gdhgqek";
+        const templeteID = "template_m18u2uk";
+        
+        emailjs.send(serviceID,templeteID,data).then(
+          (res)=> {
+            //reset form value
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+            alert("Message sent sucessfully")
+            console.log(res);
+          }).catch((err) => {console.log(err);}) 
+        
       }
     </script>
   </body>
 </html>
-
-
-<!-- https://github.com/vishal01072002/study-notion
-https://github.com/vishal01072002/weather-web-app
-https://github.com/vishal01072002/Razorpay
-https://github.com/vishal01072002/discord-live
-https://github.com/vishal01072002/portfolio
-https://github.com/vishal01072002/top-courses
-https://github.com/vishal01072002/gif-generate
-https://github.com/vishal01072002/plan-with-vishal
-https://github.com/vishal01072002/share-modal
-https://github.com/vishal01072002/testimonials
-https://github.com/vishal01072002/password-generator -->
