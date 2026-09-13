@@ -1197,3 +1197,202 @@ textarea{
         bottom: -4%;
     }
 }
+
+.experience-section {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Watermark background text matching the "Skills" watermark */
+    .watermark {
+      position: absolute;
+      top: -60px;
+      right: 0;
+      font-size: 6rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.04);
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ff5252; /* Bright coral/red matching image main heading */
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: #5c5b73; /* Slate-purple text matching subheadings */
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+
+    /* Timeline Structure */
+    .timeline {
+      position: relative;
+      border-left: 2px solid #d1d5db;
+      padding-left: 28px;
+      margin-left: 8px;
+      z-index: 1;
+    }
+
+    /* Timeline Item & Fade Animation */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Timeline Dot */
+    .timeline-dot {
+      position: absolute;
+      left: -35px;
+      top: 24px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #e5e5e5;
+      border: 2px solid #ff5252;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background-color: #ff5252;
+      box-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
+      transform: scale(1.2);
+    }
+
+    /* Card Box (Matching the white input field shadow aesthetic) */
+    .experience-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); /* Soft drop shadow from image */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-item:hover .experience-card {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .role {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333333;
+    }
+
+    .company {
+      color: #ff5252;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .period {
+      font-size: 0.8125rem;
+      color: #71717a;
+      background-color: #f4f4f5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .description {
+      font-size: 0.9375rem;
+      color: #5c5b73;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .description ul {
+      list-style-type: disc;
+      padding-left: 18px;
+    }
+
+    .description li {
+      margin-bottom: 6px;
+    }
+
+    .description li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Skill Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #5c5b73;
+      background: #f0f0f2;
+      padding: 5px 12px;
+      border-radius: 6px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .timeline-item:hover .tag {
+      background: #ffebee;
+      color: #ff5252;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .watermark {
+        font-size: 4rem;
+        top: -40px;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .period {
+        margin-top: 4px;
+      }
+    }
